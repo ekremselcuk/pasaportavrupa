@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="light" lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- Fonts from Page 1 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <!-- Fonts from Page 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Shared Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        // Page 1 Colors
+                        "primary": "#1e3a8a",
+                        "charcoal": "#1a1a1a",
+                        "royal-crimson": "#be123c",
+                        "electric-blue": "#2563eb",
+                        "gold": "#926b05",
+                        "champagne": "#f7f3e9",
+                        "cream": "#fffdfa",
+                        
+                        // Page 2 Colors (Renamed prefix to p2-)
+                        "p2-primary": "#1152d4",
+                        "p2-accent-gold": "#C5A059",
+                        "p2-background-light": "#f6f6f8",
+                        "p2-background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "serif": ["'Playfair Display'", "serif"],
+                        "sans": ["'Plus Jakarta Sans'", "sans-serif"],
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem", // Page 1 definition wins here, Page 2 was 0.75rem. We can keep 1rem or add p2-xl.
+                        "p2-xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* Page 1 Utilities */
+            .text-crimson-gradient {
+                background: linear-gradient(to bottom, #f43f5e 0%, #be123c 50%, #881337 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0px 2px 4px rgba(190, 18, 60, 0.2));
+            }
+            .bg-gold-gradient {
+                background: linear-gradient(135deg, #f9e58e 0%, #d4af37 50%, #b8860b 100%);
+            }
+            .glass-card-light {
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.9);
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+            }
+            .shimmer {
+                position: relative;
+                overflow: hidden;
+            }
+            .shimmer::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.4) 50%, transparent 55%);
+                transform: rotate(45deg);
+                pointer-events: none;
+            }
+            .crimson-glow {
+                box-shadow: 0 10px 40px -10px rgba(190, 18, 60, 0.5);
+            }
+        }
+        
+        /* Shared Material Symbols */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Page 2 specific override for outlined icons */
+        .p2-icon-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+        }
+        .p2-icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    
+    <style>
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-charcoal">
+
+    <!-- PAGE 1 CONTENT -->
+    <div class="relative flex min-h-screen w-full flex-col max-w-[430px] mx-auto shadow-2xl bg-cream overflow-hidden">
+        <div class="flex items-center bg-white/80 backdrop-blur-xl sticky top-0 z-50 p-4 justify-between border-b border-royal-crimson/5">
+            <div class="text-charcoal flex size-10 shrink-0 items-center justify-start">
+                <span class="material-symbols-outlined text-[24px]">arrow_back_ios</span>
+            </div>
+            <h2 class="text-royal-crimson font-black tracking-[0.2em] flex-1 text-center pr-10 uppercase text-[11px]">Canlı &amp; Dinamik Vizyon</h2>
+        </div>
+        
+        <div class="flex-1 flex flex-col relative">
+            <div class="absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-center bg-no-repeat bg-cover brightness-110 contrast-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAW1PbD5O2jjvH9ZcfdSmEIztr69It9qQWDrZEbBUSbACgv9lQl_OkgL0I7pvEmDcH9NQ4RdmlzwR9Y8v_DmaPJY_EMKRmNe4c93toj06MLDTq3zaSjESN4QcxLkuE6wn9uroJ1wpF2rwWqpx_nv1X3Zl1xhtUosMPWNqa2fRO2mUdsyBIYMdOku2ja9zHOTxPg5_Jou4seNet3WEU8hcHTnT-Ns_dNVLQNCKdzMIKiFGxHkseWCcTbzXb3hAQJF-BQe4WgFy76li8");'>
+                    <div class="absolute inset-0 bg-gradient-to-t from-cream via-cream/5 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent"></div>
+                </div>
+            </div>
+            
+            <div class="relative z-10 flex flex-col h-full px-6 pt-4 pb-10">
+                <div class="flex justify-center mb-6">
+                    <div class="glass-card-light px-4 py-2 rounded-full flex items-center gap-2">
+                        <span class="flex h-2 w-2 rounded-full bg-royal-crimson animate-pulse"></span>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-charcoal">Anlık 240+ yeni profil eşleşti</span>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h1 class="text-center">
+                        <span class="text-charcoal block text-[34px] font-black tracking-tighter uppercase mb-0">Avrupa'da</span>
+                        <span class="text-crimson-gradient block text-[52px] leading-[0.9] font-extrabold tracking-tighter">Yeni Bir Hayat</span>
+                    </h1>
+                    <p class="text-charcoal/90 text-center text-[18px] leading-snug max-w-[320px] mx-auto font-bold mt-4 drop-shadow-sm">
+                        Seçkin bir çevre, prestijli bir gelecek ve gerçek aşkın kalbi burada atıyor.
+                    </p>
+                </div>
+                
+                <div class="flex-grow"></div>
+                
+                <div class="glass-card-light p-4 rounded-2xl mb-6 border-white/90">
+                    <div class="flex items-center gap-4">
+                        <div class="flex -space-x-3">
+                            <img alt="User" class="w-10 h-10 rounded-full border-2 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrbY4IP-HWBx1zukQiwdw3C4Sl644Ei-T6-gHIMbKM8BogHwmoT07FqAXz01_SA7BI_vZT7WYtUjmh_ZCiNKzrz6KjH42lvmrEPbghL9w26gXImW6dRM6kRiT7tkMYvdfKsowJapgZ_22CjyaMMWxWl9YP5dluuvSjhHsMfH-EQFl0__gttfQF-jrcvpWvzG8F0nHSkqeyrtT1UEwz28iPsyvqQkJMTJ5ouQF2eS-OPemczHcTc0u1-IfWAEd496b7HKjp9Wn6zvg"/>
+                            <img alt="User" class="w-10 h-10 rounded-full border-2 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYMRogY9ZLcsxSxX8isTJeit0uq1glKcEKZ79AZAKNofyEi_mMWp7Tvh7ZpJrlE8gSF-iBA0frzwjxCF9I4Wii0Mnz1JweqCMlt__kvcPKTq-DQYel2oI9yNqs0r572TLnSxowVSKJbD8ETyeb0zkDsoOKgCvaI_LzJG9iPE918DbZaRqQpnGmd6D9J-nL09X-qyJZLn43jYYkiWK5IYPxc_XjQSi1vaIByJPbgIY8yAo9FMXc425ZtKtjlLlIdagnpVSJOghMzGg"/>
+                            <img alt="User" class="w-10 h-10 rounded-full border-2 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp__PA8SHodsQqS1FeItbfhAVxjY5TrEzBh2wfgwZdoz_tQHG6SLzmLUELuMw-VCYyl-QRDDPjqtLz7FMnaHI03JygNtieTt4CAOR-ar5ab68uKSSjH-599GrwOHWocbhgoeiY7H_8bpdu2aH1G72PKVxEB4K3tkP0VJQSqPLw76BnOIpxt17BvzxN6srAYGzXT9PiLy5SCHvXoHaxNiYy0gqRicgGqA9kjto4x-3ke0zj1vbZnJyvA-wKqAotVrT-4NSI2Ls_zOQ"/>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[11px] font-black text-royal-crimson uppercase tracking-tighter">Premium Üyelik Aktif</p>
+                            <p class="text-[10px] text-charcoal font-bold">Bugün katılarak hayalinize bir adım daha yaklaşın.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3 mb-12">
+                    <div class="flex flex-col items-center p-3 rounded-2xl bg-white/80 border border-white/40 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-royal-crimson flex items-center justify-center mb-1 shadow-md shadow-royal-crimson/20">
+                            <span class="material-symbols-outlined text-white text-[20px]">verified_user</span>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-charcoal">Güvenli</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 rounded-2xl bg-white/80 border border-white/40 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-royal-crimson flex items-center justify-center mb-1 shadow-md shadow-royal-crimson/20">
+                            <span class="material-symbols-outlined text-white text-[20px]">workspace_premium</span>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-charcoal">Vip</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 rounded-2xl bg-white/80 border border-white/40 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-royal-crimson flex items-center justify-center mb-1 shadow-md shadow-royal-crimson/20">
+                            <span class="material-symbols-outlined text-white text-[20px]">public</span>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-charcoal">Global</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-6">
+                    <button class="shimmer crimson-glow relative flex items-center justify-center rounded-2xl h-20 py-5 px-5 w-full bg-royal-crimson text-white text-[22px] font-black leading-normal tracking-[0.05em] active:scale-95 transition-all">
+                        <span class="relative z-10 flex items-center gap-3">
+                            HEMEN BAŞLA
+                            <span class="material-symbols-outlined font-black text-[28px]">arrow_forward</span>
+                        </span>
+                    </button>
+                    <p class="text-center text-charcoal text-sm font-bold">
+                        Zaten bir hesabınız var mı? <a class="text-royal-crimson font-black hover:opacity-80 underline decoration-royal-crimson/40 underline-offset-4" href="#">Giriş Yap</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="h-6 bg-cream"></div>
+    </div>
+
+    <!-- PAGE 2 CONTENT (Updated with p2- prefixes and merged) -->
+    <div class="relative flex h-auto min-h-screen w-full flex-col max-w-[430px] mx-auto overflow-x-hidden border-x border-gray-100 dark:border-gray-800 shadow-xl bg-p2-background-light dark:bg-p2-background-dark text-[#111318] dark:text-white font-display">
+        <!-- TopAppBar -->
+        <div class="sticky top-0 z-50 flex items-center bg-white/90 dark:bg-p2-background-dark/90 backdrop-blur-md p-4 pb-2 justify-between">
+            <div class="text-p2-primary flex size-12 shrink-0 items-center cursor-pointer">
+                <span class="material-symbols-outlined p2-icon-outlined">arrow_back_ios</span>
+            </div>
+            <h2 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Başarı Hikayeleri</h2>
+        </div>
+
+        <!-- HeadlineText -->
+        <div class="bg-white dark:bg-p2-background-dark px-4 pt-8 pb-4">
+            <h2 class="text-[#111318] dark:text-white tracking-light text-[28px] font-bold leading-tight text-center">Mutlu Hikayelerimizin Bir Parçası Olun</h2>
+            <p class="text-[#616f89] dark:text-gray-400 text-center mt-3 text-sm">Hayallerine kavuşan binlerce üyemizden sadece birkaçı.</p>
+        </div>
+
+        <!-- Stats Section (Custom Component) -->
+        <div class="flex justify-around p-4 my-2">
+            <div class="text-center">
+                <p class="text-p2-primary font-bold text-xl">500+</p>
+                <p class="text-xs text-[#616f89] dark:text-gray-400">Mutlu Çift</p>
+            </div>
+            <div class="text-center">
+                <p class="text-p2-accent-gold font-bold text-xl">12</p>
+                <p class="text-xs text-[#616f89] dark:text-gray-400">Avrupa Ülkesi</p>
+            </div>
+            <div class="text-center">
+                <p class="text-p2-primary font-bold text-xl">%98</p>
+                <p class="text-xs text-[#616f89] dark:text-gray-400">Vize Başarısı</p>
+            </div>
+        </div>
+
+        <!-- ImageGrid -->
+        <div class="grid grid-cols-2 gap-4 p-4">
+            <!-- Story 1 -->
+            <div class="flex flex-col gap-3 pb-3 bg-white dark:bg-gray-900 p-3 rounded-xl shadow-sm">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="A happy couple smiling in front of the Brandenburg Gate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNPAGcn7IqVgzZyMyfAlJLIn7h1iDE2N5ovW-p3eaR20AapaRfo498EM_zwpSXVjIkc8U0Pc6FX-ldEX_MS32fKkvKvmvBhtBe3-S5XxkG59qIDFFLKT9WspbhAvu30y9OMu2oDe9BfV76dFdA0603ofX13eyg-7SO5OH9LAC4gQALeBwPI5VIsx630aqdtIJH5JV2K-YFpjpgHI-lUrTApLFi4Xvy9tSzQzJmlwXeF0WsWEN7R2ttsqlo5khUscRiox-6tvXwIqQ");'></div>
+                <div>
+                    <p class="text-p2-primary text-base font-bold leading-normal">Ahmet &amp; Elena</p>
+                    <p class="text-[#111318] dark:text-gray-200 text-xs italic font-medium leading-snug mt-1">"Almanya'da yeni bir hayat kurdum, rüya gibi."</p>
+                    <div class="flex items-center gap-1 mt-2">
+                        <span class="material-symbols-outlined text-[14px] text-p2-accent-gold p2-icon-outlined">location_on</span>
+                        <p class="text-[#616f89] dark:text-gray-400 text-xs font-normal">Berlin, Almanya</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story 2 -->
+            <div class="flex flex-col gap-3 pb-3 bg-white dark:bg-gray-900 p-3 rounded-xl shadow-sm border-t-2 border-p2-accent-gold">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="Couple sitting in a Parisian cafe laughing together" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDn-kRlZqsdHkorv3vIMBbX48f6e-ZCIgt1TA4AV4ZMN2Kf8evGRQblGkrtV-W-yiunwJ69rU3TBW4juzPh0-qkcaRi3iR-LP8LxNbEqWllF9iLTwEsTu2VNxycL3kSTiLHvYSPkC9XIwhEzgt8n9NxXmyX_Az0Yb1-La1v-_TqdET0Za_HfX1AwmAsgL2hr7O7ixk4hR2DfixYkb01S_SMTz4JNY9FbD5nCFg_poPAz_o7EqyB_-x11otgYWPBa1UoES1Q9s6EyjQ");'></div>
+                <div>
+                    <p class="text-p2-primary text-base font-bold leading-normal">Mustafa &amp; Sarah</p>
+                    <p class="text-[#111318] dark:text-gray-200 text-xs italic font-medium leading-snug mt-1">"Aradığım aşkı ve huzuru burada buldum."</p>
+                    <div class="flex items-center gap-1 mt-2">
+                        <span class="material-symbols-outlined text-[14px] text-p2-accent-gold p2-icon-outlined">location_on</span>
+                        <p class="text-[#616f89] dark:text-gray-400 text-xs font-normal">Paris, Fransa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story 3 -->
+            <div class="flex flex-col gap-3 pb-3 bg-white dark:bg-gray-900 p-3 rounded-xl shadow-sm">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="Couple hiking together in the Bavarian Alps" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbr0svPCJE9jMIwMIA8hXlaGaFzpl4zC1KVj8MLkecBA5xatqLc73zTgty9MvgkL6oeJ-YrFJIRY6_-0SrhSXsa5GOX7if748PhhOFOJaQrtoinV1Nbzg0X4A34NahBDSIumFs8xpcYjrvyWLsYlw8WqzSzfzxrq5zYJzafJV4Q_a1_7rFMniG8NT-N278-u3gI5HvsUPzP6F5mNDR6YS5uTptt78qJ4lK3zim3Oku2lrS6cHqCTRChvj_OKEA4ioriRODxISmcdk");'></div>
+                <div>
+                    <p class="text-p2-primary text-base font-bold leading-normal">Emre &amp; Julia</p>
+                    <p class="text-[#111318] dark:text-gray-200 text-xs italic font-medium leading-snug mt-1">"Vize sürecinde her an yanımızdaydılar."</p>
+                    <div class="flex items-center gap-1 mt-2">
+                        <span class="material-symbols-outlined text-[14px] text-p2-accent-gold p2-icon-outlined">location_on</span>
+                        <p class="text-[#616f89] dark:text-gray-400 text-xs font-normal">Münih, Almanya</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story 4 -->
+            <div class="flex flex-col gap-3 pb-3 bg-white dark:bg-gray-900 p-3 rounded-xl shadow-sm">
+                <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="Couple cycling along a canal in Amsterdam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJrvv5Uq_BUSlcXdcdxeV0ohLAMaBdC86fHd6QTsFtJRrC7VPeGL8ZS8Khg7pUxlRMi6moWnoYSH2RIRPbNzRobBTDKeL0q3-8_DfhL73MG_kpNcnRjtW89u5zYwe-biRC9kOYzGTxlLLkYu-xYiLQ35WHAzDrfT-kcS7hrNXw_RU4rRCbcplYBp8-mB9u8ivnQqEbarp5avclgqfhCcBJUoG6PtzWw9FxCvhtb2uuRaTT4Sb4dUCRcmqzS7nZr-D6zXunvaEABbw");'></div>
+                <div>
+                    <p class="text-p2-primary text-base font-bold leading-normal">Can &amp; Sophie</p>
+                    <p class="text-[#111318] dark:text-gray-200 text-xs italic font-medium leading-snug mt-1">"Hollanda'da harika bir düzen kurduk."</p>
+                    <div class="flex items-center gap-1 mt-2">
+                        <span class="material-symbols-outlined text-[14px] text-p2-accent-gold p2-icon-outlined">location_on</span>
+                        <p class="text-[#616f89] dark:text-gray-400 text-xs font-normal">Amsterdam, Hollanda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MetaText -->
+        <div class="bg-transparent px-4 py-4 mb-20">
+            <p class="text-p2-primary text-sm font-semibold leading-normal text-center underline cursor-pointer decoration-2 underline-offset-4">Tüm Hikayeleri Gör</p>
+        </div>
+        
+        <!-- BottomNavBar -->
+        <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] flex gap-2 border-t border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-p2-background-dark px-4 pb-6 pt-2 z-50">
+            <a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#616f89] dark:text-gray-400" href="#">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined p2-icon-outlined">home</span>
+                </div>
+                <p class="text-xs font-medium leading-normal tracking-[0.015em]">Ana Sayfa</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-end gap-1 text-p2-primary" href="#">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined p2-icon-filled">auto_awesome</span>
+                </div>
+                <p class="text-xs font-bold leading-normal tracking-[0.015em]">Hikayeler</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#616f89] dark:text-gray-400" href="#">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined p2-icon-outlined">forum</span>
+                </div>
+                <p class="text-xs font-medium leading-normal tracking-[0.015em]">Mesajlar</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#616f89] dark:text-gray-400" href="#">
+                <div class="flex h-8 items-center justify-center">
+                    <span class="material-symbols-outlined p2-icon-outlined">account_circle</span>
+                </div>
+                <p class="text-xs font-medium leading-normal tracking-[0.015em]">Profil</p>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
